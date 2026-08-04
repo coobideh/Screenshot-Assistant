@@ -1,0 +1,148 @@
+{
+  "key.screenshotassistant.open_config":  "باز کردن Screenshot Assistant",
+  "key.screenshotassistant.open_browser": "باز کردن مرورگر اسکرین‌شات",
+  "key.categories.screenshotassistant":   "Screenshot Assistant",
+
+  "screenshotassistant.title":        "Screenshot Assistant",
+  "screenshotassistant.settings.tab": "تنظیمات",
+
+  "screenshotassistant.section.ui":      "زبان و رابط کاربری",
+  "screenshotassistant.section.general": "عمومی",
+  "screenshotassistant.section.storage": "ذخیره‌سازی و نام‌گذاری",
+  "screenshotassistant.section.storage.hint": "  اسکرین‌شات‌ها با فرمت تایم‌استمپ استاندارد ماینکرافت ذخیره می‌شوند (مثلاً 2026-08-04_12.34.56.png). پوشه اختصاصی هر رول در صفحه ویرایش رول تنظیم می‌شود.",
+  "screenshotassistant.section.weekly":  "چرخش هفتگی پوشه",
+  "screenshotassistant.section.rapidfire": "حالت Rapid-Fire (پشت سر هم سریع)",
+  "screenshotassistant.section.rapidfire.hint": "  اجازه می‌دهد اسکرین‌شات‌های پشت سر هم با فاصله کمتر گرفته شوند، بدون تأثیر بر کولداون کلی.",
+  "screenshotassistant.section.effects": "افکت‌های بصری",
+  "screenshotassistant.section.effects.hint": "  افکت‌هایی که لحظه گرفتن اسکرین‌شات خودکار نمایش داده می‌شوند.",
+  "screenshotassistant.section.stacked": "نوتیفیکیشن‌های پشت سر هم",
+  "screenshotassistant.section.stacked.hint": "  اسکرین‌شات‌های پشت سر هم را به صورت یک ستون از پیام‌ها روی صفحه نمایش بده. جدیدترین پایین، قدیمی‌ترها بالا می‌روند.",
+  "screenshotassistant.section.importexport": "وارد / صادر کردن تنظیمات",
+
+  "screenshotassistant.option.modLanguage": "زبان رابط ماد",
+  "screenshotassistant.option.modLanguage.tooltip": "زبانی که در همه صفحه‌های این ماد نمایش داده می‌شود. مستقل از زبان خود بازی ماینکرافت است.",
+
+  "screenshotassistant.option.cooldownSeconds": "تأخیر ضداسپم (ثانیه)",
+  "screenshotassistant.option.cooldownSeconds.tooltip": "حداقل فاصله بین اسکرین‌شات‌ها در حالت عادی. صفر = غیرفعال. وقتی Rapid-Fire فعال باشد، به جای این از فاصله rapid-fire استفاده می‌شود.",
+
+  "screenshotassistant.option.captureDelayMs": "تأخیر گرفتن عکس (میلی‌ثانیه)",
+  "screenshotassistant.option.captureDelayMs.tooltip": "بعد از رسیدن پیام مطابق قانون، این مدت صبر می‌کند و بعد عکس می‌گیرد. برای ماد «Chat Animations» عدد ۷۰۰ تا ۷۵۰ بگذارید. صفر = فوری.",
+
+  "screenshotassistant.option.fixTooltipPosition": "نمایش راهنما زیر موس (نه بالا)",
+  "screenshotassistant.option.fixTooltipPosition.tooltip": "tooltip‌ها را ۱۰۰ پیکسل پایین می‌برد. روی همه صفحه‌های بازی اثر می‌گذارد چون موتور tooltip مرکزی است.",
+
+  "screenshotassistant.option.enableRapidFire": "فعال‌سازی حالت Rapid-Fire",
+  "screenshotassistant.option.enableRapidFire.tooltip": "اجازه می‌دهد اسکرین‌شات‌های پشت سر هم هر N میلی‌ثانیه یک بار بگیرد (بدون محدودیت کولداون کلی). مفید وقتی چند رول در کمتر از یک ثانیه تریگر می‌شوند.",
+
+  "screenshotassistant.option.rapidFireIntervalMs": "فاصله Rapid-Fire",
+  "screenshotassistant.option.rapidFireIntervalMs.tooltip": "حداقل فاصله بین اسکرین‌شات‌ها در حالت Rapid-Fire. پیش‌فرض: ۲۰۰ میلی‌ثانیه. بازه: ۵۰ تا ۲۰۰۰ میلی‌ثانیه.",
+
+  "screenshotassistant.option.baseSavePath": "مسیر پایه ذخیره‌سازی",
+  "screenshotassistant.option.baseSavePath.tooltip": "همه اسکرین‌شات‌های این ماد در این مسیر ذخیره می‌شوند. خالی = پوشه پیش‌فرض .minecraft/screenshots. پوشه اختصاصی هر رول زیر این مسیر اضافه می‌شود.",
+
+  "screenshotassistant.option.weeklyRotationEnabled": "فعال‌سازی چرخش هفتگی پوشه",
+  "screenshotassistant.option.weeklyRotationEnabled.tooltip": "از روز شروع هفته، عکس‌ها در یک زیرپوشه تاریخ‌دار جدید ذخیره می‌شوند.",
+
+  "screenshotassistant.option.weekNamingMode": "سبک نام‌گذاری پوشه هفتگی",
+  "screenshotassistant.option.weekNamingMode.tooltip": "DATE_RANGE: بازه تاریخ  |  WEEK_NUMBER: شماره هفته",
+
+  "screenshotassistant.option.calendarType": "تقویم نام‌گذاری",
+  "screenshotassistant.option.calendarType.tooltip": "GREGORIAN (میلادی) یا JALALI (شمسی).",
+
+  "screenshotassistant.option.weekStartDay": "روز شروع هفته",
+  "screenshotassistant.option.weekStartDay.tooltip": "روزی که پوشه هفتگی جدید شروع می‌شود. پیش‌فرض: پنج‌شنبه (۴).",
+  "screenshotassistant.option.weekStartDay.value.1": "دوشنبه",
+  "screenshotassistant.option.weekStartDay.value.2": "سه‌شنبه",
+  "screenshotassistant.option.weekStartDay.value.3": "چهارشنبه",
+  "screenshotassistant.option.weekStartDay.value.4": "پنج‌شنبه",
+  "screenshotassistant.option.weekStartDay.value.5": "جمعه",
+  "screenshotassistant.option.weekStartDay.value.6": "شنبه",
+  "screenshotassistant.option.weekStartDay.value.7": "یک‌شنبه",
+
+  "screenshotassistant.option.weekStartHour": "ساعت شروع هفته",
+  "screenshotassistant.option.weekStartHour.tooltip": "ساعت شروع پوشه هفتگی جدید (۰ تا ۲۳). پیش‌فرض: ۰ (نیمه‌شب).",
+
+  "screenshotassistant.option.enableCaptureSound": "فعال‌سازی صدای عکاسی",
+  "screenshotassistant.option.enableCaptureSound.tooltip": "هنگام گرفتن اسکرین‌شات خودکار یک افکت صوتی پخش کن. پیش‌فرض: غیرفعال.",
+
+  "screenshotassistant.option.captureSound": "صدای عکاسی",
+  "screenshotassistant.option.captureSound.tooltip": "کدام صدا پخش بشه: CAMERA، XP_ORB، LEVEL_UP، NOTE_PLING، یا NONE.",
+
+  "screenshotassistant.option.captureSoundVolume": "ولوم صدای عکاسی",
+  "screenshotassistant.option.captureSoundVolume.tooltip": "ولوم صدای عکاسی به درصد. ۱۰۰٪ = ولوم عادی. ۰٪ = بی‌صدا. حداکثر ۱۵۰٪. پیش‌فرض: ۱۰۰٪.",
+
+  "screenshotassistant.option.enableRainbowMessage": "فعال‌سازی پیام رنگی HUD",
+  "screenshotassistant.option.enableRainbowMessage.tooltip": "متن «Screenshot saved» را در نوار اکشن رنگی کن. وقتی سابتایتل سینماتیک یا نوتیفیکیشن‌های پشت سر هم فعال باشند، این غیرفعال می‌شود.",
+
+  "screenshotassistant.option.messageColorMode": "رنگ پیام HUD",
+  "screenshotassistant.option.messageColorMode.tooltip": "سبک رنگ‌بندی: RAINBOW هفت رنگ را دوره می‌زند؛ بقیه رنگ ثابت هستند.",
+
+  "screenshotassistant.option.enableCinematicSubtitle": "فعال‌سازی سابتایتل سینماتیک",
+  "screenshotassistant.option.enableCinematicSubtitle.tooltip": "هنگام گرفتن اسکرین‌شات، یک سابتایتل نمایش می‌دهد. انیمیشن برای هر اسکرین‌شات پشت سر هم از اول شروع می‌شود — هیچ‌وقت جلوی اسکرین‌شات بعدی را نمی‌گیرد.",
+
+  "screenshotassistant.option.subtitleText": "متن سابتایتل / نوتیفیکیشن",
+  "screenshotassistant.option.subtitleText.tooltip": "متنی که در سابتایتل و نوتیفیکیشن‌های پشت سر هم نمایش داده می‌شود. هر کاراکتر یونیکد از جمله ایموجی پشتیبانی می‌شود. خالی = متن پیش‌فرض «📸 Screenshot Saved!»",
+
+  "screenshotassistant.option.subtitleColorMode": "رنگ سابتایتل / نوتیفیکیشن",
+  "screenshotassistant.option.subtitleColorMode.tooltip": "رنگ سابتایتل سینماتیک و نوتیفیکیشن‌های پشت سر هم. پیش‌فرض: طلایی (GOLD).",
+
+  "screenshotassistant.option.showScreenshotNumberInNotification": "نمایش شماره عکس در نوتیفیکیشن",
+  "screenshotassistant.option.showScreenshotNumberInNotification.tooltip": "شماره عکس (شمارنده هر پوشه) را قبل از متن نوتیفیکیشن نمایش می‌دهد، مثلاً «📸 #42 Screenshot Saved!». شمارنده هنگام تغییر پوشه ریست می‌شود. اسم فایل همچنان به فرمت تایم‌استمپ ماینکرافت ذخیره می‌شود.",
+
+  "screenshotassistant.option.enableStackedNotifications": "فعال‌سازی نوتیفیکیشن‌های پشت سر هم",
+  "screenshotassistant.option.enableStackedNotifications.tooltip": "اسکرین‌شات‌های پشت سر هم را به صورت یک ستون روی صفحه نمایش بده. هر پیام جدید در پایین (یا بالا بسته به موقعیت انتخابی) ظاهر می‌شود و قدیمی‌ترها محو می‌شوند.",
+
+  "screenshotassistant.option.maxStackedNotifications": "حداکثر تعداد نوتیفیکیشن پشت سر هم",
+  "screenshotassistant.option.maxStackedNotifications.tooltip": "بیشترین تعداد پیامی که همزمان نمایش داده می‌شود. بازه: ۱ تا ۱۰. پیش‌فرض: ۳.",
+
+  "screenshotassistant.option.notificationPosition": "موقعیت ستون نوتیفیکیشن",
+  "screenshotassistant.option.notificationPosition.tooltip": "محل نمایش ستون نوتیفیکیشن‌های پشت سر هم روی صفحه. TOP_* = جدیدترین بالا، ستون به پایین رشد می‌کند. BOTTOM_* = جدیدترین پایین، ستون به بالا رشد می‌کند. LEFT/CENTER/RIGHT = تراز افقی.",
+
+  "screenshotassistant.option.configFolderLabel": "  مسیر فایل کانفیگ:",
+  "screenshotassistant.option.importexport.hint": "  برای انتقال تنظیمات به دستگاه دیگر: ① فایل screenshotassistant.json را در دستگاه مقصد حذف کنید. ② این فایل را در همان پوشه کپی کنید. سپس ماینکرافت را ری‌استارت کنید.",
+  "screenshotassistant.option.openConfigFolder": "باز کردن پوشه کانفیگ در فایل منیجر",
+  "screenshotassistant.option.openConfigFolder.tooltip": "فعال کنید و روی Save بزنید تا پوشه کانفیگ باز شود. این گزینه خودکار ریست می‌شود.",
+
+  "screenshotassistant.rulemanager.title":    "قوانین چت",
+  "screenshotassistant.rulemanager.add":      "+ افزودن قانون",
+  "screenshotassistant.rulemanager.browse":   "📁 اسکرین‌شات‌ها",
+  "screenshotassistant.rulemanager.settings": "تنظیمات عمومی",
+  "screenshotassistant.rulemanager.done":     "پایان",
+  "screenshotassistant.rulemanager.edit":     "ویرایش",
+  "screenshotassistant.rulemanager.remove":   "حذف",
+  "screenshotassistant.rulemanager.enabled":  "فعال",
+  "screenshotassistant.rulemanager.disabled": "غیرفعال",
+  "screenshotassistant.rulemanager.empty":    "هنوز قانونی ثبت نشده – روی «+ افزودن قانون» بزنید.",
+
+  "screenshotassistant.ruleedit.title.new":  "قانون جدید",
+  "screenshotassistant.ruleedit.title.edit": "ویرایش قانون",
+  "screenshotassistant.ruleedit.name":       "نام قانون",
+  "screenshotassistant.ruleedit.ruleFolderName": "پوشه رول",
+  "screenshotassistant.ruleedit.ruleFolderName.placeholder": "(خالی = پوشه اصلی)",
+  "screenshotassistant.ruleedit.keyword":    "کلیدواژه",
+  "screenshotassistant.ruleedit.keywords.section": "کلیدواژه‌ها  (هر کدام موقعیت مستقل دارد)",
+  "screenshotassistant.ruleedit.keywords.add": "+ افزودن کلیدواژه",
+  "screenshotassistant.ruleedit.matchmode":  "حالت تطبیق",
+  "screenshotassistant.ruleedit.matchmode.or":  "حالت: OR  (هر کلیدواژه‌ای کافیه)",
+  "screenshotassistant.ruleedit.matchmode.and": "حالت: AND  (همه کلیدواژه‌ها باید باشند)",
+  "screenshotassistant.ruleedit.position.label":    "موقعیت",
+  "screenshotassistant.ruleedit.position.anywhere": "هر جای پیام",
+  "screenshotassistant.ruleedit.position.first":    "اول پیام",
+  "screenshotassistant.ruleedit.position.last":     "آخر پیام",
+  "screenshotassistant.ruleedit.position.index":    "کلمه #%s",
+  "screenshotassistant.ruleedit.index":      "شماره",
+  "screenshotassistant.ruleedit.targetPlayer": "بازیکن هدف (خالی = همه)",
+  "screenshotassistant.ruleedit.enabled.on":  "وضعیت: فعال",
+  "screenshotassistant.ruleedit.enabled.off": "وضعیت: غیرفعال",
+  "screenshotassistant.ruleedit.save":   "ذخیره",
+  "screenshotassistant.ruleedit.cancel": "انصراف",
+
+  "screenshotassistant.browser.title":    "پوشه‌های اسکرین‌شات",
+  "screenshotassistant.browser.empty":    "هیچ پوشه اسکرین‌شاتی در مسیر ذخیره پیدا نشد.",
+  "screenshotassistant.browser.done":     "بستن",
+  "screenshotassistant.browser.col.name":    "نام پوشه",
+  "screenshotassistant.browser.col.count":   "تعداد",
+  "screenshotassistant.browser.col.created": "تاریخ ساخت",
+  "screenshotassistant.browser.col.last":    "آخرین عکس",
+  "screenshotassistant.browser.hint":     "  روی هر ردیف بزنید تا آن پوشه در فایل منیجر باز شود."
+}

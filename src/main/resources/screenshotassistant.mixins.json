@@ -1,0 +1,11 @@
+{
+  "required": true,
+  "package": "net.pouyan.screenshotassistant.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "TooltipBelowMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 0
+  }
+}

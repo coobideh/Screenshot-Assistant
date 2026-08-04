@@ -1,0 +1,148 @@
+{
+  "key.screenshotassistant.open_config":   "Open Screenshot Assistant",
+  "key.screenshotassistant.open_browser":  "Open Screenshot Browser",
+  "key.categories.screenshotassistant":    "Screenshot Assistant",
+
+  "screenshotassistant.title":        "Screenshot Assistant",
+  "screenshotassistant.settings.tab": "Settings",
+
+  "screenshotassistant.section.ui":      "UI & Language",
+  "screenshotassistant.section.general": "General",
+  "screenshotassistant.section.storage": "Storage & Naming",
+  "screenshotassistant.section.storage.hint": "  Screenshots are saved with Minecraft's standard timestamp filename (e.g. 2026-08-04_12.34.56.png). Per-rule sub-folders are configured in each rule's editor.",
+  "screenshotassistant.section.weekly":  "Weekly Rotation",
+  "screenshotassistant.section.rapidfire": "Rapid-Fire Mode",
+  "screenshotassistant.section.rapidfire.hint": "  Allow multiple back-to-back screenshots in quick succession, bypassing the global cooldown for consecutive rule matches.",
+  "screenshotassistant.section.effects": "Visual Effects",
+  "screenshotassistant.section.effects.hint": "  Effects shown when an automatic screenshot fires.",
+  "screenshotassistant.section.stacked": "Stacked Notifications",
+  "screenshotassistant.section.stacked.hint": "  Show consecutive screenshot alerts as a visible on-screen stack. Newest at the bottom, older entries shift up and fade out.",
+  "screenshotassistant.section.importexport": "Import / Export Config",
+
+  "screenshotassistant.option.modLanguage": "Mod UI language",
+  "screenshotassistant.option.modLanguage.tooltip": "Language used in all Screenshot Assistant screens. Independent of Minecraft's game language.",
+
+  "screenshotassistant.option.cooldownSeconds": "Anti-spam cooldown (seconds)",
+  "screenshotassistant.option.cooldownSeconds.tooltip": "Minimum gap between screenshots in normal mode. Set to 0 to disable. When Rapid-Fire is ON, this is replaced by the rapid-fire interval instead.",
+
+  "screenshotassistant.option.captureDelayMs": "Capture delay (milliseconds)",
+  "screenshotassistant.option.captureDelayMs.tooltip": "Wait this many ms after a matching message arrives before taking the screenshot. Set 700-750 if you use 'Chat Animations' mod. 0 = capture immediately.",
+
+  "screenshotassistant.option.fixTooltipPosition": "Fix tooltip position (show below cursor)",
+  "screenshotassistant.option.fixTooltipPosition.tooltip": "Moves all in-game tooltips 100 px down so they appear BELOW the cursor. Affects every screen because Minecraft has a centralised tooltip renderer. Disable if you prefer vanilla behaviour.",
+
+  "screenshotassistant.option.enableRapidFire": "Enable rapid-fire mode",
+  "screenshotassistant.option.enableRapidFire.tooltip": "Allow consecutive screenshots to fire as fast as every N ms (see 'Rapid-fire interval' below), bypassing the global cooldown for back-to-back rule matches. Useful when many rules can fire within seconds of each other.",
+
+  "screenshotassistant.option.rapidFireIntervalMs": "Rapid-fire interval",
+  "screenshotassistant.option.rapidFireIntervalMs.tooltip": "Minimum gap between screenshots when rapid-fire mode is active. Default: 200 ms. Range: 50–2000 ms.",
+
+  "screenshotassistant.option.baseSavePath": "Base save path",
+  "screenshotassistant.option.baseSavePath.tooltip": "Where all mod screenshots are saved. Leave EMPTY for .minecraft/screenshots. Non-empty = absolute path. Per-rule sub-folders are appended under this base.",
+
+  "screenshotassistant.option.weeklyRotationEnabled": "Enable weekly folder rotation",
+  "screenshotassistant.option.weeklyRotationEnabled.tooltip": "Each week, screenshots go into a new dated sub-folder. The folder is created on the first screenshot of that week.",
+
+  "screenshotassistant.option.weekNamingMode": "Weekly folder naming style",
+  "screenshotassistant.option.weekNamingMode.tooltip": "DATE_RANGE: '2026-07-31_to_2026-08-06'  |  WEEK_NUMBER: 'Week-31-2026'",
+
+  "screenshotassistant.option.calendarType": "Calendar for folder names",
+  "screenshotassistant.option.calendarType.tooltip": "GREGORIAN or JALALI (Solar Hijri). Affects both date-range and week-number naming.",
+
+  "screenshotassistant.option.weekStartDay": "Week starts on",
+  "screenshotassistant.option.weekStartDay.tooltip": "Day of week that begins a new rotation folder. Default: Thursday (4).",
+  "screenshotassistant.option.weekStartDay.value.1": "Monday",
+  "screenshotassistant.option.weekStartDay.value.2": "Tuesday",
+  "screenshotassistant.option.weekStartDay.value.3": "Wednesday",
+  "screenshotassistant.option.weekStartDay.value.4": "Thursday",
+  "screenshotassistant.option.weekStartDay.value.5": "Friday",
+  "screenshotassistant.option.weekStartDay.value.6": "Saturday",
+  "screenshotassistant.option.weekStartDay.value.7": "Sunday",
+
+  "screenshotassistant.option.weekStartHour": "Week start hour",
+  "screenshotassistant.option.weekStartHour.tooltip": "Hour of day (0–23) at which the new weekly folder begins. Default: 0 (midnight).",
+
+  "screenshotassistant.option.enableCaptureSound": "Enable capture sound",
+  "screenshotassistant.option.enableCaptureSound.tooltip": "Play a sound effect when an automatic screenshot is taken. Disabled by default.",
+
+  "screenshotassistant.option.captureSound": "Capture sound",
+  "screenshotassistant.option.captureSound.tooltip": "Which sound plays on capture: CAMERA (UI toast), XP_ORB, LEVEL_UP, NOTE_PLING, or NONE.",
+
+  "screenshotassistant.option.captureSoundVolume": "Capture sound volume",
+  "screenshotassistant.option.captureSoundVolume.tooltip": "Volume of the capture sound as a percentage. 100% = normal. 0% = silent. Max 150%. Default: 100%.",
+
+  "screenshotassistant.option.enableRainbowMessage": "Enable coloured HUD message",
+  "screenshotassistant.option.enableRainbowMessage.tooltip": "Colour the 'Screenshot saved' text shown in the action bar. Disabled when Cinematic Subtitle or Stacked Notifications are ON.",
+
+  "screenshotassistant.option.messageColorMode": "HUD message colour",
+  "screenshotassistant.option.messageColorMode.tooltip": "Colour style for the HUD notification: RAINBOW cycles through 7 colours; others are fixed.",
+
+  "screenshotassistant.option.enableCinematicSubtitle": "Enable cinematic subtitle",
+  "screenshotassistant.option.enableCinematicSubtitle.tooltip": "Shows a subtitle via Minecraft's title system on each screenshot. The animation RESTARTS on every consecutive screenshot — it never blocks the next one.",
+
+  "screenshotassistant.option.subtitleText": "Subtitle / notification text",
+  "screenshotassistant.option.subtitleText.tooltip": "Text shown in the cinematic subtitle and in stacked notifications. Supports any Unicode including emoji. Leave empty for the default: '\uD83D\uDCF8 Screenshot Saved!'",
+
+  "screenshotassistant.option.subtitleColorMode": "Subtitle / notification colour",
+  "screenshotassistant.option.subtitleColorMode.tooltip": "Colour for the cinematic subtitle and stacked notification entries. Default: GOLD.",
+
+  "screenshotassistant.option.showScreenshotNumberInNotification": "Show screenshot number in notification",
+  "screenshotassistant.option.showScreenshotNumberInNotification.tooltip": "Prepend the per-folder screenshot counter to the notification text, e.g. '\uD83D\uDCF8 #42 Screenshot Saved!'. The counter resets when the target folder changes. The actual filename still uses the Minecraft timestamp format.",
+
+  "screenshotassistant.option.enableStackedNotifications": "Enable stacked notifications",
+  "screenshotassistant.option.enableStackedNotifications.tooltip": "Show consecutive screenshot alerts as a vertical stack in the HUD. Each new alert appears at the anchor point; older alerts shift away and fade out sooner.",
+
+  "screenshotassistant.option.maxStackedNotifications": "Max stacked notifications",
+  "screenshotassistant.option.maxStackedNotifications.tooltip": "Maximum simultaneous stack entries. Range: 1–10. Default: 3.",
+
+  "screenshotassistant.option.notificationPosition": "Notification stack position",
+  "screenshotassistant.option.notificationPosition.tooltip": "Where the stacked notification stack is anchored. TOP_* = newest at top, stack grows down. BOTTOM_* = newest at bottom, stack grows up. LEFT/CENTER/RIGHT = horizontal alignment.",
+
+  "screenshotassistant.option.configFolderLabel": "  Config file path:",
+  "screenshotassistant.option.importexport.hint": "  To move your config to another device: \u2460 Delete screenshotassistant.json on the target device. \u2461 Copy-paste this file into the same folder. Then restart Minecraft.",
+  "screenshotassistant.option.openConfigFolder": "Open Config Folder in Explorer",
+  "screenshotassistant.option.openConfigFolder.tooltip": "Toggle ON and press Save to open the config folder in your OS file manager. Toggle resets automatically.",
+
+  "screenshotassistant.rulemanager.title":  "Chat Rules",
+  "screenshotassistant.rulemanager.add":    "+ Add rule",
+  "screenshotassistant.rulemanager.browse": "\uD83D\uDCC1 Screenshots",
+  "screenshotassistant.rulemanager.settings": "General Settings",
+  "screenshotassistant.rulemanager.done":   "Done",
+  "screenshotassistant.rulemanager.edit":   "Edit",
+  "screenshotassistant.rulemanager.remove": "Remove",
+  "screenshotassistant.rulemanager.enabled":  "ON",
+  "screenshotassistant.rulemanager.disabled": "OFF",
+  "screenshotassistant.rulemanager.empty":  "No rules yet – click \"+ Add rule\" to create one.",
+
+  "screenshotassistant.ruleedit.title.new":  "New Rule",
+  "screenshotassistant.ruleedit.title.edit": "Edit Rule",
+  "screenshotassistant.ruleedit.name":       "Rule name",
+  "screenshotassistant.ruleedit.ruleFolderName": "Rule folder",
+  "screenshotassistant.ruleedit.ruleFolderName.placeholder": "(empty = base folder)",
+  "screenshotassistant.ruleedit.keyword":    "Keyword",
+  "screenshotassistant.ruleedit.keywords.section": "Keywords  (each has its own position)",
+  "screenshotassistant.ruleedit.keywords.add": "+ Add keyword",
+  "screenshotassistant.ruleedit.matchmode":  "Match mode",
+  "screenshotassistant.ruleedit.matchmode.or":  "Match mode: OR  (any keyword triggers)",
+  "screenshotassistant.ruleedit.matchmode.and": "Match mode: AND  (all keywords required)",
+  "screenshotassistant.ruleedit.position.label":   "Position",
+  "screenshotassistant.ruleedit.position.anywhere": "ANYWHERE",
+  "screenshotassistant.ruleedit.position.first":    "FIRST",
+  "screenshotassistant.ruleedit.position.last":     "LAST",
+  "screenshotassistant.ruleedit.position.index":    "INDEX #%s",
+  "screenshotassistant.ruleedit.index":      "idx",
+  "screenshotassistant.ruleedit.targetPlayer": "Target player (blank = any)",
+  "screenshotassistant.ruleedit.enabled.on":  "Rule: ENABLED",
+  "screenshotassistant.ruleedit.enabled.off": "Rule: DISABLED",
+  "screenshotassistant.ruleedit.save":   "Save",
+  "screenshotassistant.ruleedit.cancel": "Cancel",
+
+  "screenshotassistant.browser.title":    "Screenshot Folders",
+  "screenshotassistant.browser.empty":    "No screenshot folders found in the save path.",
+  "screenshotassistant.browser.done":     "Close",
+  "screenshotassistant.browser.col.name":    "Folder Name",
+  "screenshotassistant.browser.col.count":   "Count",
+  "screenshotassistant.browser.col.created": "Created",
+  "screenshotassistant.browser.col.last":    "Last Screenshot",
+  "screenshotassistant.browser.hint":     "  Click any row to open that folder in your file manager."
+}

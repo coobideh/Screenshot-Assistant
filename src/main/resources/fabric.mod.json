@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "id": "screenshotassistant",
+  "version": "${version}",
+  "name": "Screenshot Assistant",
+  "description": "Watches chat for keyword rules and automatically takes a screenshot. Supports AND/OR multi-keyword matching, flexible save paths, sequential numbering, and optional weekly (Gregorian or Jalali) folder rotation.",
+  "authors": [
+    "Pouyan (GunMax)"
+  ],
+  "contact": {
+    "sources": "https://modrinth.com/mod/screenshot-assistant-gunmax"
+  },
+  "license": "MIT",
+  "icon": "assets/screenshotassistant/icon.png",
+  "environment": "client",
+
+  "entrypoints": {
+    "client": [
+      "net.pouyan.screenshotassistant.ScreenshotAssistantClient"
+    ],
+    "modmenu": [
+      "net.pouyan.screenshotassistant.ModMenuIntegration"
+    ]
+  },
+
+  "mixins": [
+    "screenshotassistant.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.16.9",
+    "minecraft": ">=1.21",
+    "java": ">=21",
+    "fabric-api": "*",
+    "cloth-config": "*"
+  },
+  "breaks": {},
+  "suggests": {
+    "modmenu": "*"
+  },
+
+  "custom": {
+    "modmenu": {
+      "badge": "client"
+    }
+  }
+}
