@@ -37,13 +37,6 @@ import java.time.format.DateTimeFormatter;
  *   3. Sound / subtitle effects       → render thread  (no I/O, lightweight)
  *   4. PNG encode + disk write        → background thread (all blocking I/O)
  *   5. Config save + HUD notification → background → re-dispatched to render
- *
- * NOTE (MC 1.21.5+): {@link ScreenshotRecorder#takeScreenshot} no longer
- * returns a {@link NativeImage} directly; it instead accepts a
- * {@code Consumer<NativeImage>} callback that is invoked once the capture is
- * ready. Steps 3-5 are therefore performed inside that callback rather than
- * sequentially after a direct method return, but the same thread boundaries
- * still apply (the callback fires on the render thread).
  */
 public final class ScreenshotManager {
 
@@ -79,22 +72,8 @@ public final class ScreenshotManager {
         config.screenshotCounter = displayNumber + 1;
 
         // ── 3. Capture framebuffer (render thread only) ───────────────────────
-        // MC 1.21.5+: takeScreenshot() is now callback-based (void return).
-        // The callback below fires on the render thread once the capture is
-        // ready, so steps 4 (effects) and 5 (save) run from inside it.
-        Framebuffer framebuffer = client.getFramebuffer();
-        ScreenshotRecorder.takeScreenshot(framebuffer, image ->
-                onImageCaptured(client, image, targetDir, ruleFolderName, displayNumber));
-    }
+        final NativeImage image = captureCurrentFrame(client);
 
-    /**
-     * Invoked (on the render thread) once {@link ScreenshotRecorder} has
-     * finished capturing the framebuffer into a {@link NativeImage}.
-     * Fires the immediate sound/subtitle effect, then hands the image off
-     * to a background thread for PNG encode + disk write.
-     */
-    private void onImageCaptured(MinecraftClient client, NativeImage image, Path targetDir,
-                                  String ruleFolderName, int displayNumber) {
         // ── 4. Fire immediate effects (sound / subtitle) — zero I/O ──────────
         ScreenshotEffect.trigger(displayNumber);
 
@@ -158,6 +137,11 @@ public final class ScreenshotManager {
         }
         // Fallback: append nanoseconds (practically unreachable)
         return base + "_" + System.nanoTime() + ".png";
+    }
+
+    private NativeImage captureCurrentFrame(MinecraftClient client) {
+        Framebuffer framebuffer = client.getFramebuffer();
+        return ScreenshotRecorder.takeScreenshot(framebuffer);
     }
 
     /**
