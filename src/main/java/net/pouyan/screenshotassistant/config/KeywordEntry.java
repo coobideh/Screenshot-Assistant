@@ -11,8 +11,8 @@ public class KeywordEntry {
 
     public String word = "";
     public WordPosition position = WordPosition.ANYWHERE;
-    /** 0-based index; only meaningful when position == INDEX. */
-    public int index = 0;
+    /** 1-based word number (1 = first word); only meaningful when position == INDEX. */
+    public int index = 1;
 
     public KeywordEntry() {}
 

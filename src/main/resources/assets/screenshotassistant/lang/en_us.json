@@ -131,7 +131,7 @@
   "screenshotassistant.ruleedit.position.last":     "LAST",
   "screenshotassistant.ruleedit.position.index":    "INDEX #%s",
   "screenshotassistant.ruleedit.index":      "idx",
-  "screenshotassistant.ruleedit.targetPlayer": "Target player (blank = any)",
+  "screenshotassistant.ruleedit.targetPlayer": "Sender name (blank = any \u2014 player, console, or server plugin)",
   "screenshotassistant.ruleedit.enabled.on":  "Rule: ENABLED",
   "screenshotassistant.ruleedit.enabled.off": "Rule: DISABLED",
   "screenshotassistant.ruleedit.save":   "Save",

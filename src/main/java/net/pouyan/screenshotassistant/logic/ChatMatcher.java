@@ -67,9 +67,14 @@ public final class ChatMatcher {
         // Body-only data (message text alone) — this is what FIRST / LAST /
         // INDEX position checks must use, so word positions always refer to
         // the actual chat message and are never shifted by anything else.
-        String bodyNormMsg = normalizeStr(rawMessage);
+        // stripLeadingSenderTag() also removes a leaked "<PlayerName> " prefix
+        // or icon placeholder that some conflicting mods (e.g. chat-head mods)
+        // bake directly into the message text instead of the separate sender
+        // field, so the body always starts where the real message starts.
+        String bodyRaw     = stripLeadingSenderTag(rawMessage);
+        String bodyNormMsg = normalizeStr(bodyRaw);
         String[] bodyWords = bodyNormMsg.isEmpty() ? new String[0] : bodyNormMsg.split("\\s+");
-        String bodyLiteMsg = stripColorOnly(rawMessage);
+        String bodyLiteMsg = stripColorOnly(bodyRaw);
 
         // Sender-prefixed data — used ONLY for ANYWHERE matching, so a keyword
         // can still match the sender's name (e.g. "CuboiD_OG") even when it's
@@ -171,8 +176,11 @@ public final class ChatMatcher {
                 return words.length > 0 && words[words.length - 1].equals(kw);
 
             case INDEX:
+                // index is 1-based from the user's perspective (word #1 = first
+                // word); clamp legacy 0 values to the first word for old configs.
                 if (isPhrase) return false;
-                return index >= 0 && index < words.length && words[index].equals(kw);
+                int i = Math.max(0, index - 1);
+                return i < words.length && words[i].equals(kw);
 
             default: // ANYWHERE
                 if (isPhrase) {
@@ -214,6 +222,46 @@ public final class ChatMatcher {
     // Normalisation helpers
     // ─────────────────────────────────────────────────────────────────────────
 
+    // Leading junk some mods insert before the real message: colour codes and
+    // invisible/icon-placeholder characters (e.g. Private Use Area glyphs used
+    // by chat-head/avatar mods to reserve space for a player-head icon).
+    private static final java.util.regex.Pattern LEADING_JUNK = java.util.regex.Pattern.compile(
+            "^(?:[\u200B-\u200F\u00AD\uFEFF\u2060\u2062-\u2064\uE000-\uF8FF]|[§&][0-9a-fA-Fk-orK-OR])*");
+
+    /**
+     * Strips a leaked "&lt;PlayerName&gt; " sender prefix (and any leading
+     * colour codes / icon-placeholder characters before it) from the start of
+     * a raw chat line, so position-based matching always starts at the real
+     * message content — even when a conflicting mod (chat-head/avatar mods,
+     * etc.) bakes the sender tag into the message text itself instead of
+     * leaving it in the separate sender field.
+     *
+     * Only strips when the bracket content looks like a plausible username
+     * (2-24 letters/digits/underscore/dot/hyphen after stripping colour and
+     * invisible characters from inside it) — this avoids eating real message
+     * text that happens to start with "&lt;...&gt;" for other reasons.
+     */
+    private static String stripLeadingSenderTag(String s) {
+        if (s == null || s.isEmpty()) return "";
+
+        java.util.regex.Matcher lead = LEADING_JUNK.matcher(s);
+        int start = lead.lookingAt() ? lead.end() : 0;
+
+        if (start >= s.length() || s.charAt(start) != '<') return s;
+
+        int close = s.indexOf('>', start);
+        if (close < 0) return s;
+
+        String inner = s.substring(start + 1, close);
+        String innerClean = stripColorOnly(inner)
+                .replaceAll("[\u200B-\u200F\u00AD\uFEFF\u2060\u2062-\u2064\uE000-\uF8FF]", "");
+        if (!innerClean.matches("[\\p{Alnum}_.\\-]{2,24}")) return s;
+
+        int after = close + 1;
+        while (after < s.length() && Character.isWhitespace(s.charAt(after))) after++;
+        return s.substring(after);
+    }
+
     /**
      * STRATEGY A normalisation:
      * Strip colour codes, remove punctuation, NFKD, lowercase, collapse spaces.
@@ -234,8 +282,8 @@ public final class ChatMatcher {
         String r = s.replaceAll("[§&][0-9a-fA-Fk-orK-OR]", "");
         r = r.replace("\u00a7", "");
 
-        // 2. Zero-width / invisible characters
-        r = r.replaceAll("[\u200B-\u200F\u00AD\uFEFF\u2060\u2062-\u2064]", "");
+        // 2. Zero-width / invisible / icon-placeholder characters
+        r = r.replaceAll("[\u200B-\u200F\u00AD\uFEFF\u2060\u2062-\u2064\uE000-\uF8FF]", "");
 
         // 3+4. NFKD + combining marks (converts ＢＢＣ→BBC, styled chars, etc.)
         r = java.text.Normalizer.normalize(r, java.text.Normalizer.Form.NFKD);
@@ -249,7 +297,7 @@ public final class ChatMatcher {
      * Full formatting strip used by Strategy A:
      *
      *  1. §X / &X  — Minecraft legacy colour/format codes.
-     *  2. Zero-width & invisible Unicode characters.
+     *  2. Zero-width, invisible & icon-placeholder Unicode characters.
      *  3. NFKD Unicode normalisation → strips diacritics and converts fullwidth
      *     or styled Unicode letters (ＢＢＣ, 𝐁𝐁𝐂, etc.) to their ASCII base.
      *  4. Combining marks removed after NFKD.
@@ -260,8 +308,8 @@ public final class ChatMatcher {
         String r = s.replaceAll("[§&][0-9a-fA-Fk-orK-OR]", "");
         r = r.replace("\u00a7", "");
 
-        // 2. Zero-width / invisible characters
-        r = r.replaceAll("[\u200B-\u200F\u00AD\uFEFF\u2060\u2062-\u2064]", "");
+        // 2. Zero-width / invisible / icon-placeholder characters
+        r = r.replaceAll("[\u200B-\u200F\u00AD\uFEFF\u2060\u2062-\u2064\uE000-\uF8FF]", "");
 
         // 3+4. NFKD normalisation + remove combining marks
         r = java.text.Normalizer.normalize(r, java.text.Normalizer.Form.NFKD);

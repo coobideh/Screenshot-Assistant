@@ -131,7 +131,7 @@
   "screenshotassistant.ruleedit.position.last":     "آخر پیام",
   "screenshotassistant.ruleedit.position.index":    "کلمه #%s",
   "screenshotassistant.ruleedit.index":      "شماره",
-  "screenshotassistant.ruleedit.targetPlayer": "بازیکن هدف (خالی = همه)",
+  "screenshotassistant.ruleedit.targetPlayer": "نام فرستنده (خالی = همه؛ بازیکن، کنسول یا پلاگین سرور)",
   "screenshotassistant.ruleedit.enabled.on":  "وضعیت: فعال",
   "screenshotassistant.ruleedit.enabled.off": "وضعیت: غیرفعال",
   "screenshotassistant.ruleedit.save":   "ذخیره",

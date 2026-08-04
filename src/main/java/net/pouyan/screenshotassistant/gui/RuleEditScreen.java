@@ -133,7 +133,7 @@ public class RuleEditScreen extends Screen {
         int kwHeaderY = TOP_Y + row * LINE_H;
         addKeywordButton = ButtonWidget.builder(
                         Lang.t("screenshotassistant.ruleedit.keywords.add"),
-                        b -> { workKeywords.add(new KeywordEntry("", WordPosition.ANYWHERE, 0)); init(); })
+                        b -> { workKeywords.add(new KeywordEntry("", WordPosition.ANYWHERE, 1)); init(); })
                 .dimensions(left + FORM_W - 70, kwHeaderY - 1, 70, 18)
                 .build();
         addDrawableChild(addKeywordButton);
@@ -172,7 +172,7 @@ public class RuleEditScreen extends Screen {
             idf.setMaxLength(3);
             idf.setText(String.valueOf(entry.index));
             idf.setChangedListener(s -> {
-                try { workKeywords.get(idx).index = Math.max(0, Integer.parseInt(s.trim())); }
+                try { workKeywords.get(idx).index = Math.max(1, Integer.parseInt(s.trim())); }
                 catch (NumberFormatException ignored) {}
             });
             idf.setEditable(entry.position == WordPosition.INDEX);
