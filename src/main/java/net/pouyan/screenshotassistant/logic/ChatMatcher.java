@@ -64,46 +64,54 @@ public final class ChatMatcher {
             }
         }
 
-        // When the sender is known (signed CHAT messages), prepend their name to
-        // the search text so that a keyword like "CuboiD_OG" can match messages
-        // FROM that player even when the player name is not inside the message
-        // body itself (e.g. the server strips the prefix from the Text payload).
+        // Body-only data (message text alone) — this is what FIRST / LAST /
+        // INDEX position checks must use, so word positions always refer to
+        // the actual chat message and are never shifted by anything else.
+        String bodyNormMsg = normalizeStr(rawMessage);
+        String[] bodyWords = bodyNormMsg.isEmpty() ? new String[0] : bodyNormMsg.split("\\s+");
+        String bodyLiteMsg = stripColorOnly(rawMessage);
+
+        // Sender-prefixed data — used ONLY for ANYWHERE matching, so a keyword
+        // can still match the sender's name (e.g. "CuboiD_OG") even when it's
+        // not inside the message body itself. Prepending it must never affect
+        // FIRST/LAST/INDEX, which is why it's kept separate from the body data.
         String searchText = (sender != null && !sender.isBlank())
                 ? sender.trim() + " " + rawMessage
                 : rawMessage;
-
-        // Strategy A data: fully normalised message (punct → spaces, tokenised)
-        String normMsg = normalizeStr(searchText);
-        String[] words = normMsg.isEmpty() ? new String[0] : normMsg.split("\\s+");
-
-        // Strategy B data: colour-stripped only (punctuation preserved, lowercased)
-        String liteMsg = stripColorOnly(searchText);
+        String fullNormMsg = normalizeStr(searchText);
+        String[] fullWords = fullNormMsg.isEmpty() ? new String[0] : fullNormMsg.split("\\s+");
+        String fullLiteMsg = stripColorOnly(searchText);
 
         // Need at least one token or non-empty literal message
-        if (words.length == 0 && liteMsg.isBlank()) return false;
+        if (bodyWords.length == 0 && bodyLiteMsg.isBlank() && fullLiteMsg.isBlank()) return false;
+
+        MatchContext ctx = new MatchContext(bodyWords, bodyNormMsg, bodyLiteMsg,
+                                             fullWords, fullNormMsg, fullLiteMsg);
 
         return rule.matchAll
-                ? matchAll(rule.keywordEntries, words, normMsg, liteMsg)
-                : matchAny(rule.keywordEntries, words, normMsg, liteMsg);
+                ? matchAll(rule.keywordEntries, ctx)
+                : matchAny(rule.keywordEntries, ctx);
     }
 
     // ─────────────────────────────────────────────────────────────────────────
 
-    private static boolean matchAny(List<KeywordEntry> entries,
-                                    String[] words, String normMsg, String liteMsg) {
+    /** Bundles the two parallel views of the incoming line (body-only vs sender+body). */
+    private record MatchContext(String[] bodyWords, String bodyNormMsg, String bodyLiteMsg,
+                                 String[] fullWords, String fullNormMsg, String fullLiteMsg) {}
+
+    private static boolean matchAny(List<KeywordEntry> entries, MatchContext ctx) {
         for (KeywordEntry e : entries) {
-            if (entryMatches(e, words, normMsg, liteMsg)) return true;
+            if (entryMatches(e, ctx)) return true;
         }
         return false;
     }
 
-    private static boolean matchAll(List<KeywordEntry> entries,
-                                    String[] words, String normMsg, String liteMsg) {
+    private static boolean matchAll(List<KeywordEntry> entries, MatchContext ctx) {
         boolean anyValid = false;
         for (KeywordEntry e : entries) {
             if (e == null || e.word == null || e.word.isBlank()) continue;
             anyValid = true;
-            if (!entryMatches(e, words, normMsg, liteMsg)) return false;
+            if (!entryMatches(e, ctx)) return false;
         }
         // If no valid (non-blank) entries exist, do NOT fire vacuously.
         return anyValid;
@@ -111,13 +119,19 @@ public final class ChatMatcher {
 
     /**
      * Returns true if the keyword entry matches via EITHER strategy.
+     * FIRST / LAST / INDEX are checked against the message body only;
+     * ANYWHERE is checked against the sender-prefixed text as well.
      */
-    private static boolean entryMatches(KeywordEntry e,
-                                        String[] words, String normMsg, String liteMsg) {
+    private static boolean entryMatches(KeywordEntry e, MatchContext ctx) {
         if (e == null || e.word == null || e.word.isBlank()) return false;
 
         WordPosition pos   = e.position != null ? e.position : WordPosition.ANYWHERE;
         int          index = e.index;
+        boolean      usesSender = pos == WordPosition.ANYWHERE;
+
+        String[] words   = usesSender ? ctx.fullWords()   : ctx.bodyWords();
+        String   normMsg = usesSender ? ctx.fullNormMsg() : ctx.bodyNormMsg();
+        String   liteMsg = usesSender ? ctx.fullLiteMsg() : ctx.bodyLiteMsg();
 
         // ── Strategy A: full normalisation ───────────────────────────────────
         String kwNorm = normalizeStr(e.word);
